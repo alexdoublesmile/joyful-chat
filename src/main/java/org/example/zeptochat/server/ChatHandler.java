@@ -51,7 +51,8 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String s) {
+    protected void channelRead0(ChannelHandlerContext ctx, String incomingString) {
+        String s = incomingString.trim();
         if (isNull(currentUser)) {
             if (s.startsWith("/login ")) {
                 final String[] authInfo = s.split(" ");
