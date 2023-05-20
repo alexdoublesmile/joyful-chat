@@ -30,7 +30,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
     public void channelActive(ChannelHandlerContext ctx) {
         isCtxConnected = true;
 
-        ctx.writeAndFlush("Welcome to ZeptoChat! Please type for sign in (or sign up):\n/login <name> <password>\n");
+        ctx.writeAndFlush("Welcome to ZeptoChat! Please type for sign in (or sign up):\r\n/login <name> <password>\r\n");
     }
 
     @Override
@@ -56,7 +56,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
             if (s.startsWith("/login ")) {
                 final String[] authInfo = s.split(" ");
                 if (authInfo.length != 3) {
-                    ctx.writeAndFlush("Credentials format is invalid! Type correctly:\n/login <username> <password>\n");
+                    ctx.writeAndFlush("Credentials format is invalid! Type correctly:\r\n/login <username> <password>\r\n");
                     return;
                 }
                 final String username = authInfo[1];
@@ -72,7 +72,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
                             return userService.save(newUser);
                         });
                 if (!encodedPassword.equals(maybeUser.getPassword())) {
-                    ctx.writeAndFlush("Password is incorrect. Try another credentials, please.\n");
+                    ctx.writeAndFlush("Password is incorrect. Try another credentials, please.\r\n");
                     return;
                 }
                 currentUser = maybeUser;
@@ -85,7 +85,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
                     responseOutOfRoom(ctx.channel());
                 }
             } else {
-                ctx.writeAndFlush("Unknown command. Try again, please.\n");
+                ctx.writeAndFlush("Unknown command. Try again, please.\r\n");
             }
         } else {
             if (currentUser.isConnectedToAnyRoom()) {
@@ -103,7 +103,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
                     } else if (s.equals("/disconnect")) {
                         disconnect(ctx);
                     } else {
-                        ctx.writeAndFlush("Unknown command. Try again, please.\n");
+                        ctx.writeAndFlush("Unknown command. Try again, please.\r\n");
                     }
                 } else {
                     broadcastMessage(currentUser.getName(), s);
@@ -116,10 +116,10 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
                     } else if (s.startsWith("/join ")) {
                         tryJoin(ctx, s);
                     } else {
-                        ctx.writeAndFlush("Unknown command. Try again, please.\n");
+                        ctx.writeAndFlush("Unknown command. Try again, please.\r\n");
                     }
                 } else {
-                    ctx.writeAndFlush("Unknown command. Try again, please.\n");
+                    ctx.writeAndFlush("Unknown command. Try again, please.\r\n");
                 }
             }
         }
@@ -128,46 +128,46 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
     private void tryJoin(ChannelHandlerContext ctx, String s) {
         final String[] joinInfo = s.split(" ");
         if (joinInfo.length != 2) {
-            ctx.writeAndFlush("Join command format is invalid! Type correctly:\n/join <channel>\n");
+            ctx.writeAndFlush("Join command format is invalid! Type correctly:\r\n/join <channel>\r\n");
             return;
         }
         final String roomName = joinInfo[1];
         final Optional<ChatRoom> maybeRoom = chatRoomService.findByName(roomName);
 
         if (maybeRoom.isEmpty()) {
-            ctx.writeAndFlush("Channel name is incorrect. Try another channel name, please.\n");
+            ctx.writeAndFlush("Channel name is incorrect. Try another channel name, please.\r\n");
             return;
         }
         tryConnectToRoom(ctx, maybeRoom.get());
     }
 
     private void showUsers(ChannelHandlerContext ctx, ChatRoom room) {
-        ctx.writeAndFlush("\nCurrent users are:\n" + room.getUsers()
+        ctx.writeAndFlush("\r\nCurrent users are:\r\n" + room.getUsers()
                 .stream()
                 .map(User::getName)
-                .collect(joining("\n")) + "\n");
+                .collect(joining("\r\n")) + "\r\n");
     }
 
     private String formatMessage(String sender, String s) {
-        return format("[%s]: %s\n", sender, s);
+        return format("[%s]: %s\r\n", sender, s);
     }
 
     private void showRooms(ChannelHandlerContext ctx) {
         List<ChatRoom> rooms = chatRoomService.findAll();
-        ctx.writeAndFlush("\nCurrent channels are:\n" + rooms
+        ctx.writeAndFlush("\r\nCurrent channels are:\r\n" + rooms
                 .stream()
                 .map(room -> room.getName() + " (" + room.getUsers().size() + ")")
-                .collect(joining("\n")) + "\n");
+                .collect(joining("\r\n")) + "\r\n");
     }
 
     private void responseOutOfRoom(Channel channel) {
-        channel.writeAndFlush("\nYou can join any channel (if it's not full):\n/list -> get list of channels\n/join <channel> -> join to the channel\n");
+        channel.writeAndFlush("\r\nYou can join any channel (if it's not full):\r\n/list -> get list of channels\r\n/join <channel> -> join to the channel\r\n");
     }
 
     private void tryConnectToRoom(ChannelHandlerContext ctx, ChatRoom room) {
         if (room.isFull()) {
             ctx.writeAndFlush(format(
-                    "You can't connect to channel '%s' - it's full now.\nChoose another channel, please, or try connect later\n", room.getName()));
+                    "You can't connect to channel '%s' - it's full now.\r\nChoose another channel, please, or try connect later\r\n", room.getName()));
         } else {
             if (!currentUser.isConnectedToRoom(room)) {
                 if (currentUser.getLastRoom() != null) {
@@ -179,7 +179,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
             }
 
             currentUser.getDevices().forEach(channel -> channel.writeAndFlush(format(
-                    "\nWelcome to channel '%s', %s! You can use commands:\n/list -> get list of channels\n/join <channel> -> join to the channel\n/users -> get list of users\n/leave -> leave current channel\n/disconnect -> leave chat\n",
+                    "\r\nWelcome to channel '%s', %s! You can use commands:\r\n/list -> get list of channels\r\n/join <channel> -> join to the channel\r\n/users -> get list of users\r\n/leave -> leave current channel\r\n/disconnect -> leave chat\r\n",
                     room.getName(), currentUser.getName())));
             currentUser.getDevices().forEach(channel -> channel.writeAndFlush(join("", room.getHistory())));
         }
