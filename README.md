@@ -1,0 +1,81 @@
+# ZeptoChat - A Java simple chat based on Netty framework that allows users to communicate with each other in real time (v.1.0.0)
+                     
+- Our chat supports multiple channels for users communications. 
+- For communication user should sign in by unique name and password.
+- User can only join one channel at a time.
+- User can at the same time connect from any number of devices.
+- User automatically joins to his last channel(if it's not full).
+- After joining user gets last history of the channel.
+
+## Available Commands:
+
+|Command|Action|
+|---|---|
+|/login [name] [password]|sign up or try to sign in if exists
+|/list|get list of channels
+|/join [channel]|try to join a channel
+|/users|get list of unique users in current channel
+|/leave|leave channel
+|/disconnect|leave server
+
+## Compiling from source
+
+ZeptoChat uses [Apache Maven](https://maven.apache.org/) v3.5 or higher to build.
+ZeptoChat is compatible with Java 8+, and we test on LTS versions of Java along
+with the latest release. To build, simply run `mvn clean package`. All ZeptoChat's
+dependencies will be available on Maven Central soon. Please file an issue for
+build-related issues if you're having trouble (though do check if you're
+missing proxy settings for Maven first, as that's a common cause of build
+failures, and out of our control).
+
+## Running
+
+### Get started
+
+To get started with the project, you will need to have the following installed:
+- `Java 8+`
+
+Once you have the necessary software installed, you can clone the project from GitHub:
+```
+git clone https://github.com/alexdoublesmile/zeptochat.git
+```
+To run the project, open the project in your IDE and run the Launcher class, or you can use terminal. 
+
+### Environment variables
+
+While running, you can set some environment variables for additional chat server config:
+
+|Env name|Description|Default values|
+|---|---|---|
+|SERVER_HOST|server host value|localhost
+|SERVER_PORT|server port value|8080
+|SERVER_BACKLOG|the number of connections that can be queued up before a server refuses new connections|512
+|KEEP_ALIVE|send a periodic probe to the other end of the connection to ensure that the connection is still alive. If the other end of the connection does not respond to the probe, the connection is considered to be dead and can be closed|true
+|ROOM_SIZE|users limit for every channel|10
+|HISTORY_SIZE|last messages limit for history|20
+
+### Usage
+
+Once the application is running, you can connect to the server by any `client` (telnet, desktop, web client, etc.) by properly `host` and `port`.
+
+Then create new account or log in with an existing account. Once you are logged in, you can join an existing chat room. 
+
+###Troubleshooting
+
+If you encounter any problems running the project, please check the following:
+- Make sure you have the `Java 8+` installed.
+- Make sure you are running the project from the `root` directory of the project.
+- Make sure you connected to the server by properly `host` and `port`.
+- If you are still having problems, please open an issue on GitHub.
+
+## Contributing
+
+If you would like to contribute to the project, please fork the project on GitHub and submit a pull request.
+
+## License
+
+ZeptoChat is licensed under the [Apache 2.0 License](./LICENSE.txt).
+
+## Release Notes:
+
+- v1.0.0 - Initial internal release. This release only supports basic functionality
