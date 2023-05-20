@@ -60,7 +60,7 @@ Once the application is running, you can connect to the server by any `client` (
 
 Then create new account or log in with an existing account. Once you are logged in, you can join an existing chat room. 
 
-###Troubleshooting
+### Troubleshooting
 
 If you encounter any problems running the project, please check the following:
 - Make sure you have the `Java 8+` installed.
