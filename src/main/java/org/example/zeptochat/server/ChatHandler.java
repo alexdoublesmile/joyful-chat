@@ -52,6 +52,9 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String incomingString) {
+        // TODO: 20.05.2023 add custom exceptions and handle them
+        // TODO: 20.05.2023 refactor to service handling strategies and use interfaces only
+        // TODO: 20.05.2023 add all scenario testing
         String s = incomingString.trim();
         if (isNull(currentUser)) {
             if (s.startsWith("/login ")) {
