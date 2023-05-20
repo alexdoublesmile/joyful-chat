@@ -11,7 +11,7 @@ public final class UserService {
 
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    private UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
