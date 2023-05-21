@@ -26,4 +26,9 @@ public final class InMemoryChatRoomRepository implements ChatRoomRepository {
     public List<ChatRoom> findAll() {
         return new ArrayList<>(chatRoomsMap.values());
     }
+
+    @Override
+    public void update(ChatRoom room) {
+        chatRoomsMap.put(room.getName(), room);
+    }
 }

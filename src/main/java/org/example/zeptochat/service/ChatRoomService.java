@@ -23,4 +23,8 @@ public final class ChatRoomService {
     public List<ChatRoom> findAll() {
         return chatRoomRepository.findAll();
     }
+
+    public void update(ChatRoom room) {
+        chatRoomRepository.update(room);
+    }
 }

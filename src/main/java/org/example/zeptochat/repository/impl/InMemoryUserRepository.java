@@ -28,4 +28,9 @@ public final class InMemoryUserRepository implements UserRepository {
         usersMap.put(user.getName(), user);
         return user;
     }
+
+    @Override
+    public void update(User user) {
+        usersMap.put(user.getName(), user);
+    }
 }

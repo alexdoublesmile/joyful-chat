@@ -43,6 +43,8 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
 
     private void disconnect(ChannelHandlerContext ctx) {
         currentUser.leaveServer(ctx.channel());
+        chatRoomService.update(currentUser.getLastRoom());
+
         if (currentUser.getDevices().isEmpty()) {
             broadcastLeaveMessage();
         }
@@ -80,7 +82,9 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
                     return;
                 }
                 currentUser = maybeUser;
+
                 currentUser.addDevice(ctx.channel());
+
                 ctx.writeAndFlush(format("Welcome, %s! ", currentUser.getName()));
                 if (nonNull(currentUser.getLastRoom())) {
                     tryConnectToRoom(ctx, currentUser.getLastRoom());
@@ -102,7 +106,10 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
                         showUsers(ctx, currentUser.getLastRoom());
                     } else if (message.equals("/leave")) {
                         broadcastLeaveMessage();
-                        currentUser.leaveRoom();
+                        final ChatRoom abandonedRoom = currentUser.leaveRoom();
+                        userService.update(currentUser);
+                        chatRoomService.update(abandonedRoom);
+
                         currentUser.getDevices().forEach(this::responseOutOfRoom);
                     } else if (message.equals("/disconnect")) {
                         disconnect(ctx);
@@ -112,6 +119,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
                 } else {
                     broadcastMessage(currentUser.getName(), message);
                     currentUser.getLastRoom().addHistory(formatMessage(currentUser.getName(), message));
+                    chatRoomService.update(currentUser.getLastRoom());
                 }
             } else {
                 if (message.startsWith("/")) {
@@ -177,8 +185,11 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
                 if (currentUser.getLastRoom() != null) {
                     broadcastLeaveMessage();
                     currentUser.leaveRoom();
+                    userService.update(currentUser);
                 }
                 room.addUser(currentUser);
+                chatRoomService.update(room);
+
                 broadcastMessage(format("%s connected to '%s'", currentUser.getName(), room.getName()));
             }
 

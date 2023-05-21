@@ -8,4 +8,6 @@ public interface ChatRoomRepository {
     ChatRoom findByName(String name);
 
     List<ChatRoom> findAll();
+
+    void update(ChatRoom room);
 }

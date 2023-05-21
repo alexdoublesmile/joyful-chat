@@ -42,11 +42,13 @@ public class User {
         return room.equals(lastRoom) && lastRoom.getUsers().contains(this);
     }
 
-    public void leaveRoom() {
+    public ChatRoom leaveRoom() {
+        ChatRoom abandonedRoom = lastRoom;
         if (nonNull(lastRoom)) {
             lastRoom.removeUser(this);
             lastRoom = null;
         }
+        return abandonedRoom;
     }
 
     public void leaveServer(Channel channel) {
