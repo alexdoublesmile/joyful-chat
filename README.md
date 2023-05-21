@@ -90,4 +90,4 @@ ZeptoChat is licensed under the [Apache 2.0 License](./LICENSE.txt).
 
 ## Release Notes:
 
-- v1.0.0 - Initial internal release. This release only supports basic functionality
+- v0.0.1 - Initial internal release. This release only supports basic functionality
