@@ -169,7 +169,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
     }
 
     private void tryConnectToRoom(ChannelHandlerContext ctx, ChatRoom room) {
-        if (room.isFull()) {
+        if (room.isFull() & !currentUser.isConnectedToRoom(room)) {
             ctx.writeAndFlush(format(
                     "You can't connect to channel '%s' - it's full now.\r\nChoose another channel, please, or try connect later\r\n", room.getName()));
         } else {
