@@ -55,10 +55,10 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
         // TODO: 20.05.2023 add custom exceptions and handle them
         // TODO: 20.05.2023 refactor to service handling strategies and use interfaces only
         // TODO: 20.05.2023 add all scenario testing
-        String s = incomingString.trim();
+        String message = incomingString.trim();
         if (isNull(currentUser)) {
-            if (s.startsWith("/login ")) {
-                final String[] authInfo = s.split(" ");
+            if (message.startsWith("/login ")) {
+                final String[] authInfo = message.split(" ");
                 if (authInfo.length != 3) {
                     ctx.writeAndFlush("Credentials format is invalid! Type correctly:\r\n/login <username> <password>\r\n");
                     return;
@@ -93,32 +93,32 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
             }
         } else {
             if (currentUser.isConnectedToAnyRoom()) {
-                if (s.startsWith("/")) {
-                    if (s.equals("/list")) {
+                if (message.startsWith("/")) {
+                    if (message.equals("/list")) {
                         showRooms(ctx);
-                    } else if (s.startsWith("/join ")) {
-                        tryJoin(ctx, s);
-                    } else if (s.equals("/users")) {
+                    } else if (message.startsWith("/join ")) {
+                        tryJoin(ctx, message);
+                    } else if (message.equals("/users")) {
                         showUsers(ctx, currentUser.getLastRoom());
-                    } else if (s.equals("/leave")) {
+                    } else if (message.equals("/leave")) {
                         broadcastLeaveMessage();
                         currentUser.leaveRoom();
                         currentUser.getDevices().forEach(this::responseOutOfRoom);
-                    } else if (s.equals("/disconnect")) {
+                    } else if (message.equals("/disconnect")) {
                         disconnect(ctx);
                     } else {
                         ctx.writeAndFlush("Unknown command. Try again, please.\r\n");
                     }
                 } else {
-                    broadcastMessage(currentUser.getName(), s);
-                    currentUser.getLastRoom().addHistory(formatMessage(currentUser.getName(), s));
+                    broadcastMessage(currentUser.getName(), message);
+                    currentUser.getLastRoom().addHistory(formatMessage(currentUser.getName(), message));
                 }
             } else {
-                if (s.startsWith("/")) {
-                    if (s.equals("/list")) {
+                if (message.startsWith("/")) {
+                    if (message.equals("/list")) {
                         showRooms(ctx);
-                    } else if (s.startsWith("/join ")) {
-                        tryJoin(ctx, s);
+                    } else if (message.startsWith("/join ")) {
+                        tryJoin(ctx, message);
                     } else {
                         ctx.writeAndFlush("Unknown command. Try again, please.\r\n");
                     }
