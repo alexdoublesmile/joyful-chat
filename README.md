@@ -1,11 +1,23 @@
 # ZeptoChat - A Java simple chat based on Netty framework that allows users to communicate with each other in real time (v.0.0.1 - MVP/PoC)
                      
-- Our chat supports multiple channels for users communications. 
-- For communication user should sign in by unique name and password.
-- User can only join one channel at a time.
-- User can at the same time connect from any number of devices.
-- User automatically joins to his last channel(if it's not full).
-- After joining user gets last history of the channel.
+- Our chat supports multiple channels for users communications
+- For communication user should sign in by unique name and password
+- If user is new, his unique name and encrypted password will be saving to system (while the server is going only, because no persistence in MVP)
+- Logged in user can use out of channel commands for getting channels list (with current online users number) or joining to any channel
+- User can only join one channel at a time
+- User can at the same time connect from any number of devices
+- Any attempt to join full channel (manually or auto) will return error message to user (if user is not in this channel already by another device)
+- Everybody from the channel gets system message about users connection
+- User joined to channel gets all users messages history of current channel (according to the history limit)
+- User joined to channel can use as well join and list commands and several more commands (get number of current users, leave the current channel or disconnect from the server)
+- User joined to channel and trying to log in from another device by his credentials, will be automatically redirect to his joined channel (even if this channel is full)
+- All user messages are public and sent to all users from current channel
+- All commands are private, only current user can see them in current device
+- When user joins the other channel he automatically leaves current channel
+- When user joins/leaves channel, he joins/leaves it from all his devices at one time
+- When user disconnects from the server, he disconnects only from the current device but still online in current channel by his other connected devices
+- When user disconnects from all devices or leaves channel everybody from this channel gets message about his disconnection
+- When user is not new and logged in he is automatically redirected to his channel (last channel he was disconnected from but not left it)
 
 ## Available Commands:
 
