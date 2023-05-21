@@ -58,4 +58,11 @@ class ChatRoomServiceTest {
                 .contains(SECRET_ROOM)
                 .contains(PLAIN_ROOM);
     }
+
+    @Test
+    void roomUpdatesIfUpdateSuccess() {
+        chatRoomService.update(PLAIN_ROOM);
+
+        verify(chatRoomRepository, times(1)).update(PLAIN_ROOM);
+    }
 }

@@ -1,5 +1,6 @@
 package org.example.zeptochat.service;
 
+import org.example.zeptochat.entity.ChatRoom;
 import org.example.zeptochat.entity.User;
 import org.example.zeptochat.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -51,5 +52,12 @@ class UserServiceTest {
 
         verify(userRepository, times(1)).save(IVAN);
         assertThat(actualUser).isEqualTo(IVAN);
+    }
+
+    @Test
+    void userUpdatesIfUpdateSuccess() {
+        userService.update(IVAN);
+
+        verify(userRepository, times(1)).update(IVAN);
     }
 }
