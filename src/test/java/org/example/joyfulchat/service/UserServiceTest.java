@@ -1,4 +1,4 @@
-package org.example.zeptochat.service;
+package org.example.joyfulchat.service;
 
 import org.example.joyfulchat.entity.User;
 import org.example.joyfulchat.repository.UserRepository;
