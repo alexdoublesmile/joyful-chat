@@ -1,4 +1,4 @@
-# JoyfulChat - A Java simple chat based on Netty framework that allows users to communicate with each other in real time (v.0.0.1 - MVP/PoC)
+# JoyfulChat - A Java simple chat based on Netty framework that allows users to communicate with each other in real time (v.0.0.2 - MVP/PoC)
                      
 - Our chat supports multiple channels for users communications
 - For communication user should sign in by unique name and password
