@@ -1,7 +1,8 @@
 package org.example.zeptochat.service;
 
-import org.example.zeptochat.entity.ChatRoom;
-import org.example.zeptochat.repository.ChatRoomRepository;
+import org.example.joyfulchat.entity.ChatRoom;
+import org.example.joyfulchat.repository.ChatRoomRepository;
+import org.example.joyfulchat.service.ChatRoomService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

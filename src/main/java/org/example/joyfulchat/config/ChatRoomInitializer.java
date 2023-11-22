@@ -1,6 +1,6 @@
-package org.example.zeptochat.config;
+package org.example.joyfulchat.config;
 
-import org.example.zeptochat.entity.ChatRoom;
+import org.example.joyfulchat.entity.ChatRoom;
 
 import java.util.HashMap;
 import java.util.Map;

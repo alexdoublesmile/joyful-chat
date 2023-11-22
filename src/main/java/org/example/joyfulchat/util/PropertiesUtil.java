@@ -1,11 +1,11 @@
-package org.example.zeptochat.util;
+package org.example.joyfulchat.util;
 
 import java.io.IOException;
 import java.util.Properties;
 
 import static java.lang.Integer.parseInt;
 import static org.apache.commons.lang3.StringUtils.*;
-import static org.example.zeptochat.util.PropertiesConstants.*;
+import static org.example.joyfulchat.util.PropertiesConstants.*;
 
 public final class PropertiesUtil {
     private static final Properties PROPERTIES = new Properties();

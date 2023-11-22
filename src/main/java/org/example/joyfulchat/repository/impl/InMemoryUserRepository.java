@@ -1,7 +1,7 @@
-package org.example.zeptochat.repository.impl;
+package org.example.joyfulchat.repository.impl;
 
-import org.example.zeptochat.entity.User;
-import org.example.zeptochat.repository.UserRepository;
+import org.example.joyfulchat.entity.User;
+import org.example.joyfulchat.repository.UserRepository;
 
 import java.util.HashMap;
 import java.util.Map;

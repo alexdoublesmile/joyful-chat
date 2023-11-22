@@ -1,4 +1,4 @@
-package org.example.zeptochat.server;
+package org.example.joyfulchat.server;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

@@ -1,8 +1,8 @@
-package org.example.zeptochat.service;
+package org.example.joyfulchat.service;
 
-import org.example.zeptochat.entity.User;
-import org.example.zeptochat.repository.UserRepository;
-import org.example.zeptochat.repository.impl.InMemoryUserRepository;
+import org.example.joyfulchat.entity.User;
+import org.example.joyfulchat.repository.UserRepository;
+import org.example.joyfulchat.repository.impl.InMemoryUserRepository;
 
 import java.util.Optional;
 

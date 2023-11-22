@@ -1,8 +1,8 @@
-package org.example.zeptochat.repository.impl;
+package org.example.joyfulchat.repository.impl;
 
-import org.example.zeptochat.entity.ChatRoom;
-import org.example.zeptochat.repository.ChatRoomRepository;
-import org.example.zeptochat.config.ChatRoomInitializer;
+import org.example.joyfulchat.config.ChatRoomInitializer;
+import org.example.joyfulchat.entity.ChatRoom;
+import org.example.joyfulchat.repository.ChatRoomRepository;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package org.example.zeptochat.repository;
+package org.example.joyfulchat.repository;
 
-import org.example.zeptochat.entity.ChatRoom;
+import org.example.joyfulchat.entity.ChatRoom;
 
 import java.util.List;
 

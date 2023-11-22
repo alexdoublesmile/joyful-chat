@@ -1,4 +1,4 @@
-package org.example.zeptochat.util;
+package org.example.joyfulchat.util;
 
 public final class PasswordHelper {
     public static String encode(String s) {

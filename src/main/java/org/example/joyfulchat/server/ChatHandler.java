@@ -1,13 +1,13 @@
-package org.example.zeptochat.server;
+package org.example.joyfulchat.server;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import org.example.zeptochat.entity.ChatRoom;
-import org.example.zeptochat.entity.User;
-import org.example.zeptochat.service.ChatRoomService;
-import org.example.zeptochat.service.UserService;
-import org.example.zeptochat.util.PasswordHelper;
+import org.example.joyfulchat.entity.ChatRoom;
+import org.example.joyfulchat.entity.User;
+import org.example.joyfulchat.service.ChatRoomService;
+import org.example.joyfulchat.service.UserService;
+import org.example.joyfulchat.util.PasswordHelper;
 
 import java.util.List;
 import java.util.Optional;

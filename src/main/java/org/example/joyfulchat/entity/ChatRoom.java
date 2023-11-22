@@ -1,10 +1,10 @@
-package org.example.zeptochat.entity;
+package org.example.joyfulchat.entity;
 
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.example.zeptochat.util.PropertiesUtil;
+import org.example.joyfulchat.util.PropertiesUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,8 @@ import java.util.UUID;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import static java.util.Objects.nonNull;
-import static org.example.zeptochat.util.PropertiesConstants.HISTORY_SIZE_PROPERTY;
-import static org.example.zeptochat.util.PropertiesConstants.ROOM_SIZE_PROPERTY;
+import static org.example.joyfulchat.util.PropertiesConstants.HISTORY_SIZE_PROPERTY;
+import static org.example.joyfulchat.util.PropertiesConstants.ROOM_SIZE_PROPERTY;
 
 @Data
 @Builder

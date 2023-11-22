@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>zeptochat</artifactId>
+    <artifactId>joyful-chat</artifactId>
     <version>0.0.1</version>
 
     <properties>

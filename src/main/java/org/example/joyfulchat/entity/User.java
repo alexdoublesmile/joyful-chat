@@ -1,4 +1,4 @@
-package org.example.zeptochat.entity;
+package org.example.joyfulchat.entity;
 
 import io.netty.channel.Channel;
 import lombok.*;

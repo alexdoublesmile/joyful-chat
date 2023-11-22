@@ -1,6 +1,6 @@
-package org.example.zeptochat.repository;
+package org.example.joyfulchat.repository;
 
-import org.example.zeptochat.entity.User;
+import org.example.joyfulchat.entity.User;
 
 public interface UserRepository {
     User findByName(String name);

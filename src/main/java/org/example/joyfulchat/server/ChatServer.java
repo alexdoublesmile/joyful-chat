@@ -1,4 +1,4 @@
-package org.example.zeptochat.server;
+package org.example.joyfulchat.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -6,11 +6,11 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import org.example.zeptochat.util.PropertiesUtil;
+import org.example.joyfulchat.util.PropertiesUtil;
 
 import java.net.InetSocketAddress;
 
-import static org.example.zeptochat.util.PropertiesConstants.*;
+import static org.example.joyfulchat.util.PropertiesConstants.*;
 
 // TODO: 18.05.2023 add logger
 // TODO: 18.05.2023 add exception handling
