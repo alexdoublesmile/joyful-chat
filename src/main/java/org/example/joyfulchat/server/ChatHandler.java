@@ -30,7 +30,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
     public void channelActive(ChannelHandlerContext ctx) {
         isCtxConnected = true;
 
-        ctx.writeAndFlush("Welcome to ZeptoChat! Please type for sign in (or sign up):\r\n/login <name> <password>\r\n");
+        ctx.writeAndFlush("Welcome to JoyfulChat! Please type for sign in (or sign up):\r\n/login <name> <password>\r\n");
     }
 
     @Override
@@ -209,7 +209,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<String> {
     }
 
     private void broadcastMessage(String message) {
-        broadcastMessage("ZeptoChat", message);
+        broadcastMessage("JoyfulChat", message);
     }
 
     private void broadcastMessage(String sender, String message) {
