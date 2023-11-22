@@ -1,4 +1,4 @@
-# ZeptoChat - A Java simple chat based on Netty framework that allows users to communicate with each other in real time (v.0.0.1 - MVP/PoC)
+# JoyfulChat - A Java simple chat based on Netty framework that allows users to communicate with each other in real time (v.0.0.1 - MVP/PoC)
                      
 - Our chat supports multiple channels for users communications
 - For communication user should sign in by unique name and password
@@ -32,9 +32,9 @@
 
 ## Compiling from source
 
-ZeptoChat uses [Apache Maven](https://maven.apache.org/) v3.5 or higher to build.
-ZeptoChat is compatible with Java 8+, and we test on LTS versions of Java along
-with the latest release. To build, simply run `mvn clean package`. All ZeptoChat's
+JoyfulChat uses [Apache Maven](https://maven.apache.org/) v3.5 or higher to build.
+JoyfulChat is compatible with Java 8+, and we test on LTS versions of Java along
+with the latest release. To build, simply run `mvn clean package`. All JoyfulChat's
 dependencies will be available on Maven Central soon. Please file an issue for
 build-related issues if you're having trouble (though do check if you're
 missing proxy settings for Maven first, as that's a common cause of build
@@ -49,7 +49,7 @@ To get started with the project, you will need to have the following installed:
 
 Once you have the necessary software installed, you can clone the project from GitHub:
 ```
-git clone https://github.com/alexdoublesmile/zeptochat.git
+git clone https://github.com/alexdoublesmile/joyful-chat.git
 ```
 To run the project, open the project in your IDE and run the Launcher class, or you can use terminal. 
 
@@ -86,8 +86,8 @@ If you would like to contribute to the project, please fork the project on GitHu
 
 ## License
 
-ZeptoChat is licensed under the [Apache 2.0 License](./LICENSE.txt).
+JoyfulChat is licensed under the [Apache 2.0 License](./LICENSE.txt).
 
 ## Release Notes:
 
-- v0.0.1 - Initial internal release. This release only supports basic functionality
+- v0.0.1 - Initial internal release. This release only supports basic functionality.
